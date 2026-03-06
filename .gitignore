@@ -1,0 +1,5 @@
+
+# exclude folders
+/**/.idea/
+/**/target/
+allure-results/

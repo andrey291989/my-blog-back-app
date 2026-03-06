@@ -1,0 +1,16 @@
+package com.blog.config;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.stereotype.Controller;
+
+@Configuration
+@ComponentScan(
+    basePackages = "com.blog",
+    excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Controller.class)
+)
+public class RootConfig {
+    // Root configuration class for service and repository components
+    // Excludes controllers which are handled by WebConfig
+}
