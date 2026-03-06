@@ -18,7 +18,6 @@ public class PostListResponse {
         this.lastPage = lastPage;
     }
 
-    // Геттеры и сеттеры
     public List<PostListItemResponse> getPosts() { return posts; }
     public void setPosts(List<PostListItemResponse> posts) { this.posts = posts; }
 

@@ -22,7 +22,6 @@ public class PostListItemResponse {
         this.commentsCount = commentsCount;
     }
 
-    // Геттеры и сеттеры
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

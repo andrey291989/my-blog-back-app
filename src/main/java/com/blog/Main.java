@@ -9,32 +9,19 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) {
         try {
-            System.out.println("Starting Tomcat server...");
 
             Tomcat tomcat = new Tomcat();
 
-            // Установка порта
             tomcat.setPort(8080);
-            System.out.println("Port set to 8080");
 
-            // Создание базовой директории для Tomcat
             String baseDir = createTempDirectory();
             tomcat.setBaseDir(baseDir);
-            System.out.println("Base directory: " + baseDir);
 
-            // Создание контекста
             Context context = tomcat.addContext("", new File("src/main/webapp").getAbsolutePath());
-            System.out.println("Context created with docBase: " + new File("src/main/webapp").getAbsolutePath());
 
-            // Добавление слушателя для инициализации Spring
             context.addApplicationListener("com.blog.WebAppInitializer");
-            System.out.println("WebAppInitializer listener added");
 
-            // Запуск Tomcat
-            System.out.println("Starting Tomcat...");
             tomcat.start();
-            System.out.println("Tomcat started successfully on port 8080");
-            System.out.println("Application should be available at http://localhost:8080/");
 
             tomcat.getServer().await();
         } catch (Exception e) {

@@ -13,7 +13,6 @@ public class CommentResponse {
         this.postId = postId;
     }
 
-    // Геттеры и сеттеры
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

@@ -54,10 +54,8 @@ public class Post {
     }
 
     public Post() {
-        // Инициализация будет выполнена в @PrePersist
     }
 
-    // Геттеры и сеттеры
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

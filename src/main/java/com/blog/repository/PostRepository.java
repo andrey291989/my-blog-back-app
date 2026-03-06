@@ -22,7 +22,6 @@ public class PostRepository {
 
     public List<Post> findAll(int pageNumber, int pageSize) {
         TypedQuery<Post> query = entityManager.createQuery("SELECT p FROM Post p ORDER BY p.createdAt DESC", Post.class);
-        // Исправляем расчет firstResult чтобы избежать отрицательных значений
         int firstResult = Math.max(0, pageNumber * pageSize);
         query.setFirstResult(firstResult);
         query.setMaxResults(pageSize);
@@ -35,20 +34,12 @@ public class PostRepository {
     }
 
     public Post save(Post post) {
-        System.out.println("Saving post with ID: " + post.getId());
-        System.out.println("Post created at: " + post.getCreatedAt());
-        System.out.println("Post updated at: " + post.getUpdatedAt());
 
         if (post.getId() == null) {
-            System.out.println("Persisting new post");
             entityManager.persist(post);
         } else {
-            System.out.println("Merging existing post");
             post = entityManager.merge(post);
         }
-
-        // После сохранения объект может быть изменен, особенно если это новый объект
-        System.out.println("Post saved with ID: " + post.getId());
         return post;
     }
 
@@ -77,7 +68,6 @@ public class PostRepository {
             "LOWER(p.text) LIKE LOWER(CONCAT('%', :search, '%')) " +
             "ORDER BY p.createdAt DESC", Post.class);
         query.setParameter("search", search);
-        // Исправляем расчет firstResult чтобы избежать отрицательных значений
         int firstResult = Math.max(0, pageNumber * pageSize);
         query.setFirstResult(firstResult);
         query.setMaxResults(pageSize);

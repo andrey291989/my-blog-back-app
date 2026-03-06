@@ -69,14 +69,8 @@ public class PostService {
         post.setLikesCount(0);
         post.setCommentsCount(0);
 
-        // Добавим логирование для отладки
-        System.out.println("Creating post with title: " + post.getTitle());
-        System.out.println("Post created at: " + post.getCreatedAt());
-        System.out.println("Post updated at: " + post.getUpdatedAt());
 
         Post savedPost = postRepository.save(post);
-
-        System.out.println("Saved post ID: " + savedPost.getId());
 
         return convertToResponse(savedPost, false);
     }

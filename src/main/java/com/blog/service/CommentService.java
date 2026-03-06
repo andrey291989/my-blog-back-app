@@ -54,7 +54,6 @@ public class CommentService {
 
         Comment savedComment = commentRepository.save(comment);
 
-        // Update comments count on post
         post.setCommentsCount(post.getCommentsCount() + 1);
         postRepository.save(post);
 
@@ -87,7 +86,6 @@ public class CommentService {
 
         commentRepository.deleteById(commentId);
 
-        // Update comments count on post
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new RuntimeException("Post not found with id: " + postId));
 

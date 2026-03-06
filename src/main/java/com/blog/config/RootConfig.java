@@ -11,6 +11,4 @@ import org.springframework.stereotype.Controller;
     excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Controller.class)
 )
 public class RootConfig {
-    // Root configuration class for service and repository components
-    // Excludes controllers which are handled by WebConfig
 }
